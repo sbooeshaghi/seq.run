@@ -8,18 +8,22 @@ function estimateFileSize() {
   var basesPerRead = parseInt(document.getElementById("basesPerRead").value);
 
   var linesPerRead = 4;
-  var readLength = basesPerRead;
-  var qualityScoreLength = basesPerRead;
-  var averageLineLength = readLength + 1 + qualityScoreLength + 1; // Sequence line + newline + Quality score line + newline
-  var compressionRatio = 4; // Estimated average compression ratio
+  var readLength = basesPerRead + 1;
+  var qualityScoreLength = basesPerRead + 1;
+  var headerLength = 50 + 1; // Header + newline
+  var spacerLength = 1 + 1; // Newline + plus sign
+  var compressionRatio = 20; // Estimated average compression ratio
 
   var estimatedSize =
-    numberOfReads * linesPerRead * averageLineLength * (1 / compressionRatio);
+    numberOfReads *
+    (readLength + qualityScoreLength + headerLength + spacerLength) *
+    (1 / compressionRatio);
   var fileSize = formatSize(estimatedSize);
   var peFileSize = formatSize(estimatedSize * 2);
 
   var assumptions = {
     "Number of reads": numberOfReads.toLocaleString(),
+    "Length of header": headerLength,
     "Length of read": basesPerRead + "bp",
     "Length of quality score": basesPerRead + "bp",
     "Lines per read": "4 (matching the FASTQ file standard)",
