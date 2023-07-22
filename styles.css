@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .input-container {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  input[type="number"],
+  select {
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-top: 10px;
+    text-align: left;
+  }

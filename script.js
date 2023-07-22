@@ -10,9 +10,9 @@ function estimateFileSize() {
   var linesPerRead = 4;
   var readLength = basesPerRead + 1;
   var qualityScoreLength = basesPerRead + 1;
-  var headerLength = 50 + 1; // Header + newline
+  var headerLength = 63 + 1; // Header + newline
   var spacerLength = 1 + 1; // Newline + plus sign
-  var compressionRatio = 20; // Estimated average compression ratio
+  var compressionRatio = 5.2; // Estimated average compression ratio
 
   var estimatedSize =
     numberOfReads *
@@ -44,7 +44,7 @@ function estimateFileSize() {
 }
 
 function formatSize(sizeInBytes) {
-  var units = ["B", "kB", "MB", "GB", "TB"];
+  var units = ["B", "kB", "MB", "GB", "TB", "PB"];
   var power = 0;
   while (sizeInBytes >= 1000 && power < units.length - 1) {
     sizeInBytes /= 1000;
