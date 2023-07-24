@@ -12,7 +12,7 @@ function estimateFileSize() {
   var qualityScoreLength = basesPerRead + 1;
   var headerLength = 63 + 1; // Header + newline
   var spacerLength = 1 + 1; // Newline + plus sign
-  var compressionRatio = 5.2; // Estimated average compression ratio
+  var compressionRatio = 5.2173; // Estimated average compression ratio
 
   var estimatedSize =
     numberOfReads *
