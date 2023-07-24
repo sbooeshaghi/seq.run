@@ -41,6 +41,8 @@ function estimateFileSize() {
   document.getElementById(
     "result"
   ).textContent = `Estimated gzipped FASTQ file size: ${fileSize}, (${peFileSize} for paired-end)`;
+  document.getElementById("analysis").innerHTML =
+    "How the compression ratio was calculated: <a href='model.html'>link</a>";
 }
 
 function formatSize(sizeInBytes) {
