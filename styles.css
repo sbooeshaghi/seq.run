@@ -1,54 +1,95 @@
+/* Basic Reset */
+body,
+h1,
+h2,
+div,
+label,
+input,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styling */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
 
-  .container {
-    text-align: center;
-  }
+/* Container */
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px #00000026;
+  border-radius: 8px;
+}
 
-  h1 {
-    text-align: center;
-  }
+/* Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
 
-  .input-container {
-    margin-top: 10px;
-    text-align: left;
-  }
+/* Form elements */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-  label {
-    display: inline-block;
-    margin-right: 10px;
-  }
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Add this property */
+}
+select{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Add this property */
+}
 
-  input[type="number"],
-  select {
-    margin-top: 5px;
-    padding: 5px;
-  }
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
 
-  button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+button:hover {
+  background-color: #0056b3;
+}
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-    text-align: left;
-  }
+/* Result styling */
+#result {
+  margin-top: 20px;
+}
 
-  li {
-    margin-bottom: 5px;
-  }
+#result div {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
 
-  p {
-    margin-top: 10px;
-    text-align: left;
-  }
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    input[type="text"], button {
+        font-size: 20px;
+        padding: 15px 10px;
+    }
+}
