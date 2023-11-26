@@ -1,11 +1,15 @@
 function estimateFileSize() {
-  var numberOfReads = parseInt(document.getElementById("numberOfReads").value);
+  var numberOfReads = parseInt(
+    document.getElementById("fileSizeNumberOfReads").value
+  );
   var unitMultiplier = parseInt(
-    document.getElementById("unitMultiplier").value
+    document.getElementById("fileSizeUnitMultiplier").value
   );
   numberOfReads *= unitMultiplier;
 
-  var basesPerRead = parseInt(document.getElementById("basesPerRead").value);
+  var basesPerRead = parseInt(
+    document.getElementById("fileSizeBasesPerRead").value
+  );
 
   var linesPerRead = 4;
   var readLength = basesPerRead + 1;
@@ -30,7 +34,7 @@ function estimateFileSize() {
     "Compression ratio": `1 / ${compressionRatio}`,
   };
 
-  var list = document.getElementById("assumptions");
+  var list = document.getElementById("fileSizeAssumptions");
   list.textContent = "";
   for (var key in assumptions) {
     var listItem = document.createElement("li");
@@ -39,9 +43,59 @@ function estimateFileSize() {
   }
 
   document.getElementById(
-    "result"
+    "fileSizeResult"
   ).textContent = `Estimated gzipped FASTQ file size: ${fileSize}, (${peFileSize} for paired-end)`;
-  document.getElementById("analysis").innerHTML =
+  document.getElementById("fileSizeAnalysis").innerHTML =
+    "How the compression ratio was calculated: <a href='model.html'>link</a>";
+}
+
+function estimateNumReads() {
+  var fileSize = parseInt(document.getElementById("numReadsFileSize").value);
+  var unitMultiplier = parseInt(
+    document.getElementById("numReadsUnitMultiplier").value
+  );
+  fileSize *= unitMultiplier;
+
+  var basesPerRead = parseInt(
+    document.getElementById("numReadsBasesPerRead").value
+  );
+
+  var linesPerRead = 4;
+  var readLength = basesPerRead + 1;
+  var qualityScoreLength = basesPerRead + 1;
+  var headerLength = 63 + 1; // Header + newline
+  var spacerLength = 1 + 1; // Newline + plus sign
+  var compressionRatio = 5.2173; // Estimated average compression ratio
+
+  var numReads =
+    (fileSize * compressionRatio) /
+    (readLength + qualityScoreLength + headerLength + spacerLength);
+  // var fileSize = formatSize(estimatedSize);
+  // var peFileSize = formatSize(estimatedSize * 2);
+
+  var assumptions = {
+    "File size": formatSize(fileSize),
+    "Length of header": headerLength,
+    "Length of read": basesPerRead + "bp",
+    "Length of quality score": basesPerRead + "bp",
+    "Lines per read": "4 (matching the FASTQ file standard)",
+    "Compression ratio": `1 / ${compressionRatio}`,
+  };
+
+  var list = document.getElementById("numReadsAssumptions");
+  list.textContent = "";
+  for (var key in assumptions) {
+    var listItem = document.createElement("li");
+    listItem.innerHTML = `<b>${key}</b>` + ": " + assumptions[key];
+    list.appendChild(listItem);
+  }
+
+  document.getElementById(
+    "numReadsResult"
+  ).textContent = `Estimated number of reads in gzipped FASTQ: ${Math.round(
+    numReads
+  ).toLocaleString()}`;
+  document.getElementById("numReadsAnalysis").innerHTML =
     "How the compression ratio was calculated: <a href='model.html'>link</a>";
 }
 

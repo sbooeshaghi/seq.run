@@ -57,7 +57,7 @@ select{
   box-sizing: border-box; /* Add this property */
 }
 
-button {
+#size_button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -67,8 +67,22 @@ button {
   border-radius: 4px;
 }
 
-button:hover {
+#size_button:hover {
   background-color: #0056b3;
+}
+
+#reads_button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ba274a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+#reads_button:hover {
+  background-color: #841C26;
 }
 
 /* Result styling */

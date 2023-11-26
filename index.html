@@ -7,24 +7,24 @@
   </head>
   <body>
     <div class="container">
-      <h1>FASTQ File Size Estimator</h1>
+      <h1>FASTQ Size Calculator</h1>
 
       <div>
         <label for="basesPerRead">Length of read (bp):</label>
-        <input type="number" id="basesPerRead" min="1" required />
+        <input type="number" id="fileSizeBasesPerRead" min="1" required />
       </div>
 
       <div>
         <label for="numberOfReads">Number of reads:</label>
         <input
           type="number"
-          id="numberOfReads"
+          id="fileSizeNumberOfReads"
           min="1"
           required
           placeholder="100"
           value="100"
         />
-        <select id="unitMultiplier">
+        <select id="fileSizeUnitMultiplier">
           <option value="1">Reads</option>
           <option selected value="1000000">Million</option>
           <option value="10000000">10 Million</option>
@@ -32,11 +32,45 @@
         </select>
       </div>
 
-      <button onclick="estimateFileSize()">Calculate</button>
+      <button onclick="estimateFileSize()" id="size_button">Calculate</button>
 
-      <ul id="assumptions"></ul>
-      <p id="result"></p>
-      <p id="analysis"></p>
+      <ul id="fileSizeAssumptions"></ul>
+      <p id="fileSizeResult"></p>
+      <p id="fileSizeAnalysis"></p>
+    </div>
+
+    <!-- Reverse converter -->
+    <div class="container">
+      <h1>FASTQ Reads Calculator</h1>
+
+      <div>
+        <label for="basesPerRead">Length of read (bp):</label>
+        <input type="number" id="numReadsBasesPerRead" min="1" required />
+      </div>
+
+      <div>
+        <label for="fileSize">Size of FASTQ:</label>
+        <input
+          type="number"
+          id="numReadsFileSize"
+          min="1"
+          required
+          placeholder="100"
+          value="100"
+        />
+        <select id="numReadsUnitMultiplier">
+          <option value="1000000">MegaByte</option>
+          <option selected value="1000000000">GigaByte</option>
+          <option value="10000000000">10 GigaByte</option>
+          <option value="100000000000">100 GigaByte</option>
+        </select>
+      </div>
+
+      <button onclick="estimateNumReads()" id="reads_button">Calculate</button>
+
+      <ul id="numReadsAssumptions"></ul>
+      <p id="numReadsResult"></p>
+      <p id="numReadsAnalysis"></p>
     </div>
 
     <script src="script.js"></script>
